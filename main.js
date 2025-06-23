@@ -32,11 +32,27 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
-let humanScore = 0;
-let computerScore = 0;
+function playGame() {
+    
+    let humanScore = 0;
+    let computerScore = 0;
+    let turnCounter = 0;
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+    while (turnCounter < 5) {
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        outcome = playRound(humanSelection, computerSelection);
+        switch (outcome) {
+            case 'human':
+                ++humanScore;
+                break;
+            case 'computer':
+                ++computerScore;
+                break;
+            case 'tie':
+                break;
+        }
+        ++turnCounter;
+    }
+}
 
-outcome = playRound(humanSelection, computerSelection);
-console.log(getHumanChoice())
