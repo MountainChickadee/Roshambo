@@ -54,5 +54,8 @@ function playGame() {
         }
         ++turnCounter;
     }
+
+    console.log(`Human: ${humanScore}   Comp: ${computerScore}`)
 }
 
+playGame()
