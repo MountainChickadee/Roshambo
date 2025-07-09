@@ -51,7 +51,17 @@ container.addEventListener('click', (event) => {
             case 'tie':
                 break;
         }
-    }
         let score = document.querySelector("#score"); 
         score.textContent = `Human: ${humanScore}   Comp: ${computerScore}`;
+    }
+    if (humanScore == 5 || computerScore == 5) {
+        let readOut = document.querySelector("#readOut");
+        if (humanScore == 5) {
+            readOut.textContent = 'Player 1 wins the game!'
+        }
+        else {
+            readOut.textContent = 'The Computer wins the game!'
+        }
+    } 
+
 });
