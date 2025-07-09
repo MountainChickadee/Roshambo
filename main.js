@@ -10,11 +10,6 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    choice = prompt('Choose rock, paper, or scissors: ');
-    return choice.toLowerCase();
-}
-
 function playRound(humanChoice, computerChoice) {
     
     if (humanChoice == computerChoice) {
@@ -29,18 +24,21 @@ function playRound(humanChoice, computerChoice) {
         console.log(`${computerChoice.toUpperCase()} beats ${humanChoice}. The computer is the winner!`)
         return 'computer';
     }
-
 }
 
-function playGame() {
-    
-    let humanScore = 0;
-    let computerScore = 0;
-    let turnCounter = 0;
 
-    while (turnCounter < 5) {
-        let humanSelection = getHumanChoice();
+let humanScore = 0;
+let computerScore = 0;
+
+const container = document.querySelector('#container');
+container.addEventListener('click', (event) => {
+    if ((event.target.tagName === 'BUTTON') && (humanScore < 5 && computerScore < 5)) {
+        
+        let humanSelection = event.target.id;
+        console.log(event.target.id);
+        
         let computerSelection = getComputerChoice();
+
         outcome = playRound(humanSelection, computerSelection);
         switch (outcome) {
             case 'human':
@@ -52,10 +50,7 @@ function playGame() {
             case 'tie':
                 break;
         }
-        ++turnCounter;
     }
 
-    console.log(`Human: ${humanScore}   Comp: ${computerScore}`)
-}
-
-playGame()
+        console.log(`Human: ${humanScore}   Comp: ${computerScore}`)
+});
