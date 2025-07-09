@@ -12,16 +12,18 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
     
+    let readOut = document.querySelector("#readOut");
+
     if (humanChoice == computerChoice) {
-        console.log(`Both players choose ${humanChoice}. Its a tie!`)
+        readOut.textContent = `Both players choose ${humanChoice}. Its a tie!`;
         return 'tie';    
     }
     else if ((humanChoice == 'rock' && computerChoice == 'scissors') || (humanChoice == 'paper' && computerChoice == 'rock') || (humanChoice == 'scissors' && computerChoice == 'paper')) {
-        console.log(`${humanChoice.toUpperCase()} beats ${computerChoice}. Player 1 is the winner!`)
+        readOut.textContent = `${humanChoice.toUpperCase()} beats ${computerChoice}. Player 1 is the winner!`
         return 'human';
     }
     else {
-        console.log(`${computerChoice.toUpperCase()} beats ${humanChoice}. The computer is the winner!`)
+        readOut.textContent = `${computerChoice.toUpperCase()} beats ${humanChoice}. The computer is the winner!`
         return 'computer';
     }
 }
@@ -35,7 +37,6 @@ container.addEventListener('click', (event) => {
     if ((event.target.tagName === 'BUTTON') && (humanScore < 5 && computerScore < 5)) {
         
         let humanSelection = event.target.id;
-        console.log(event.target.id);
         
         let computerSelection = getComputerChoice();
 
@@ -51,6 +52,6 @@ container.addEventListener('click', (event) => {
                 break;
         }
     }
-
-        console.log(`Human: ${humanScore}   Comp: ${computerScore}`)
+        let score = document.querySelector("#score"); 
+        score.textContent = `Human: ${humanScore}   Comp: ${computerScore}`;
 });
